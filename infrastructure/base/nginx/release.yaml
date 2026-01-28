@@ -12,5 +12,5 @@ spec:
         kind: HelmRepository
         name: nginx
       interval: 1h
-  interval: 1h
+  interval: 1m0s
   releaseName: nginx
