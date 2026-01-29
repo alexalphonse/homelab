@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: traefik-release  # ← Changed to match base release name
+  namespace: traefik
+spec:
+  values:
+    deployment:
+      replicas: 1  # Production uses 2 replicas
+    ingressRoute:
+      dashboard:
+        enabled: true
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+      websecure:
+        tls:
+          enabled: true
+    logs:
+      access:
+        enabled: true
