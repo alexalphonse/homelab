@@ -7,7 +7,7 @@ spec:
   chart:
     spec:
       chart: kubevirt-operator
-      version: 3.x.x
+      version: 1.x.x
       sourceRef:
         kind: HelmRepository
         name: kubevirt
@@ -21,7 +21,7 @@ spec:
     operator:
       image:
         repository: quay.io/kubevirt/virt-operator
-        tag: v1.2.0
+        version: 1.x.x
       resources:
         requests:
           cpu: 100m

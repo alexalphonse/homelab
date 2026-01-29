@@ -35,7 +35,7 @@ spec:
                     operator: Exists
                     effect: NoSchedule
   infra:
-    replicas: 2
+    replicas: 1
   workloadUpdateStrategy:
     workloadUpdateMethods:
       - LiveMigrate
