@@ -8,36 +8,8 @@ spec:
   certificateRotateStrategy: {}
   configuration:
     developerConfiguration:
-      featureGates:
-        - LiveMigration
-        - CPUManager
-        - CPUNodeDiscovery
-        - HostDisk
-        - GPU
-    network:
-      defaultNetworkInterface: bridge
-      permitSlirpInterface: false
-      permitBridgeInterfaceOnPodNetwork: true
-    permittedHostDevices:
-      pciHostDevices:
-        - pciVendorSelector: "10DE:*"  # NVIDIA GPUs
-          resourceName: "nvidia.com/gpu"
-  customizeComponents:
-    patches:
-      - resourceType: DaemonSet
-        resourceName: virt-handler
-        patch: |
-          spec:
-            template:
-              spec:
-                tolerations:
-                  - key: nvidia.com/gpu
-                    operator: Exists
-                    effect: NoSchedule
-  infra:
-    replicas: 1
-  workloadUpdateStrategy:
-    workloadUpdateMethods:
-      - LiveMigrate
-      - Evict
+      featureGates: []
+    imagePullPolicy: IfNotPresent
+  customizeComponents: {}
   imagePullPolicy: IfNotPresent
+  workloadUpdateStrategy: {}
