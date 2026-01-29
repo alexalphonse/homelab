@@ -1,0 +1,5 @@
+resources:
+  - release.yaml
+  - namespace.yaml
+  - repository.yaml
+  - kubevirt-cr.yaml

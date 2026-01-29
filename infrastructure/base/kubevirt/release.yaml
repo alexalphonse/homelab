@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: kubevirt-operator
+  namespace: kubevirt
+spec:
+  chart:
+    spec:
+      chart: kubevirt-operator
+      version: 3.x.x
+      sourceRef:
+        kind: HelmRepository
+        name: kubevirt
+      interval: 1h
+  interval: 1m0s
+  releaseName: kubevirt
+  dependsOn:
+    - name: longhorn
+      namespace: longhorn-system
+  values:
+    operator:
+      image:
+        repository: quay.io/kubevirt/virt-operator
+        tag: v1.2.0
+      resources:
+        requests:
+          cpu: 100m
+          memory: 150Mi
+        limits:
+          cpu: 500m
+          memory: 512Mi
