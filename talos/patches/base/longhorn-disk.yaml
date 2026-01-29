@@ -1,6 +1,6 @@
 machine:
   disks:
-    - device: /dev/sdb
+    - device: /dev/sda
       partitions:
         - mountpoint: /var/lib/longhorn
 
