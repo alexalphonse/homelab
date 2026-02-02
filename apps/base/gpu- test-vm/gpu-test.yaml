@@ -1,0 +1,47 @@
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: gpu-test-vm
+  namespace: default
+spec:
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: gpu-test-vm
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: nvidia
+      domain:
+        devices:
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          gpus:
+            - name: gpu1
+              deviceName: nvidia.com/GPU
+          interfaces:
+            - name: default
+              masquerade: {}
+        resources:
+          requests:
+            memory: 4Gi
+            cpu: 2
+          limits:
+            memory: 4Gi
+            cpu: 2
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        - name: containerdisk
+          containerDisk:
+            image: quay.io/containerdisks/ubuntu:22.04
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userDataBase64: I2Nsb3VkLWNvbmZpZwpwYWNrYWdlX3VwZ3JhZGU6IHRydWUKcGFja2FnZXM6CiAgLSBxZW11LWd1ZXN0LWFnZW50CiAgLSBjdXJsCnJ1bmNtZDoKICAjIEluc3RhbGwgTlZJRElBIGRyaXZlcnMKICAtIGN1cmwgLWZzU0wgaHR0cHM6Ly9kZXZlbG9wZXIuZG93bmxvYWQubnZpZGlhLmNvbS9jb21wdXRlL2N1ZGEvcmVwb3MvdWJ1bnR1MjIwNC94ODZfNjQvY3VkYS1rZXlyaW5nXzEuMS0xX2FsbC5kZWIgLW8gL3RtcC9jdWRhLWtleXJpbmcuZGViCiAgLSBkcGtnIC1pIC90bXAvY3VkYS1rZXlyaW5nLmRlYgogIC0gYXB0LWdldCB1cGRhdGUKICAtIGFwdC1nZXQgaW5zdGFsbCAteSBudmlkaWEtZHJpdmVyLTUzNQpzc2hfcHdhdXRoOiB0cnVlCnVzZXJzOgogIC0gbmFtZTogdWJ1bnR1CiAgICBzdWRvOiBBTEw9KEFMTCkgTk9QQVNTV0Q6QUxMCiAgICBncm91cHM6IHN1ZG8KICAgIHNoZWxsOiAvYmluL2Jhc2gKICAgIGxvY2tfcGFzc3dkOiBmYWxzZQogICAgcGFzc3dkOiAkNiRyb3VuZHM9NDAwNiRITzBQQzlpVkRvdnpISTlFJG5PZW5tclRUUFpLalJUbWp3bnc4V0hVQWo4VFl5MGlWMFBvVlFUZzBIMWZBcjBXb2ZQZ0lBMDVCTXJLZEMyckxySTVDQWNkdFB5VEZzVkJxWEtsTDEKICAgICMgUGFzc3dvcmQgaXM6IHVidW50dQpmaW5hbF9tZXNzYWdlOiAiVGhlIHN5c3RlbSBpcyBmaW5hbGx5IHVwLCBhZnRlciAkVVBUSU1FIHNlY29uZHMi
