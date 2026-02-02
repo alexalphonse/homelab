@@ -1,5 +1,5 @@
-resources:
-  - release.yaml
-  - namespace.yaml
-  - repository.yaml
-  - kubevirt-cr.yaml
+ resources:
+    - kubevirt-operator.yaml
+    - kubevirt-cr.yaml
+    #- namespace.yaml
+    - repository.yaml
