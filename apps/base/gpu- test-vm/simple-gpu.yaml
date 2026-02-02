@@ -1,0 +1,31 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: simple-gpu-test
+  namespace: default
+spec:
+  running: false
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: simple-gpu-test
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: nvidia
+      domain:
+        devices:
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+          gpus:
+            - name: gpu1
+              deviceName: nvidia.com/GPU
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 1
+      volumes:
+        - name: containerdisk
+          containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
