@@ -24,17 +24,19 @@ spec:
                 bus: virtio
           gpus:
             - name: gpu1
-              deviceName: nvidia.com/GPU
+              deviceName: nvidia.com/gpu
           interfaces:
             - name: default
               masquerade: {}
+        machine:
+          type: q35
         resources:
           requests:
             memory: 4Gi
-            cpu: 2
+            cpu: "2"
           limits:
             memory: 4Gi
-            cpu: 2
+            cpu: "2"
       networks:
         - name: default
           pod: {}

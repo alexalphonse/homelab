@@ -1,3 +1,4 @@
+---
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
@@ -20,11 +21,16 @@ spec:
                 bus: virtio
           gpus:
             - name: gpu1
-              deviceName: nvidia.com/GPU
+              deviceName: nvidia.com/gpu
+        machine:
+          type: q35
         resources:
           requests:
             memory: 2Gi
-            cpu: 1
+            cpu: "1"
+          limits:
+            memory: 2Gi
+            cpu: "1"
       volumes:
         - name: containerdisk
           containerDisk:
