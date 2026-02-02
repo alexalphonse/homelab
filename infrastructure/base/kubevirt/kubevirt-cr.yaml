@@ -13,3 +13,8 @@ spec:
   customizeComponents: {}
   imagePullPolicy: IfNotPresent
   workloadUpdateStrategy: {}
+
+  infra:
+    nodePlacement:
+      nodeSelector:
+        kubernetes.io/hostname: nvidia
