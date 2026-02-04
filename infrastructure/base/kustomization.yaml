@@ -4,3 +4,4 @@ resources:
 - nginx
 - longhorn
 - kubevirt
+- monitoring
