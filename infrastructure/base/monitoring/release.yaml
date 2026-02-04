@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: prometheus-community
+      chart: kube-prometheus-stack
       version: 57.x.x
       sourceRef:
         kind: HelmRepository
