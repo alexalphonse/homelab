@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./infastructure/base/traefik
+  path: ../infrastructure/base/traefik
   prune: true
   sourceRef:
     kind: GitRepository
