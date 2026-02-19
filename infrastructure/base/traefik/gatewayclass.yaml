@@ -1,4 +1,4 @@
-apiVersion: gateway.networkin.k8sio/v1
+apiVersion: gateway.networking.k8sio/v1
 kind: GatewayClass
 metadata:
   name: traefik-GatewayClass
