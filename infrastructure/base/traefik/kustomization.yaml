@@ -1,5 +1,4 @@
 resources:
-  - gateway-api-crds.yaml
   - gatewayclass.yaml
   - gateway.yaml
   - release.yaml
