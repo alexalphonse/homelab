@@ -12,6 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
+        namespace: traefik
       interval: 1h
   releaseName: traefik
   install:
