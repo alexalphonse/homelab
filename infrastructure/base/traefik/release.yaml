@@ -1,9 +1,10 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: traefik-release
+  name: traefik
   namespace: traefik
 spec:
+  interval: 10m
   chart:
     spec:
       chart: traefik/traefik
@@ -12,5 +13,18 @@ spec:
         kind: HelmRepository
         name: traefik
       interval: 1h
-  interval: 1m0s
   releaseName: traefik
+  install:
+    createNamespace: true
+  values:
+    additionalArguments:
+      - "--providers.kubernetesgateway=true"
+    ports:
+      web:
+        expose: true
+        exposedPort: 80
+      websecure:
+        expose: true
+        exposedPort: 443
+    service:
+      type: LoadBalancer
