@@ -1,6 +1,0 @@
-resources:
-  - gatewayclass.yaml
-  - gateway.yaml
-  - release.yaml
-  - namespace.yaml
-  - repository.yaml
