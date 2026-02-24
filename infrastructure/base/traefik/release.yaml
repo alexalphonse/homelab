@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: traefik
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+      version: "26.x.x"
+  values:
+    service:
+      type: LoadBalancer
+    ingressRoute:
+      dashboard:
+        enabled: true
+    ports:
+      web:
+        redirectTo: websecure
+    additionalArguments:
+      - "--api.dashboard=true"
+      - "--providers.kubernetesingress=true"
