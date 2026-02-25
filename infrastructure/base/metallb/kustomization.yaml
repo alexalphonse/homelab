@@ -2,5 +2,5 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - ipaddresspool.yaml
-  - l2advertisement.yaml
+ # - ipaddresspool.yaml
+ # - l2advertisement.yaml
