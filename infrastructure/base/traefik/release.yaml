@@ -35,6 +35,3 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
-        matchRule: 192.168.1.111/dashboard/
-        entryPoints:
-          - websecure
