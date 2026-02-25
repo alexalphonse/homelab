@@ -12,3 +12,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: traefik
+  values:
+    service:
+      type: LoadBalancer
