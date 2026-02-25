@@ -13,5 +13,21 @@ spec:
         kind: HelmRepository
         name: traefik
   values:
-    service:
-      type: LoadBalancer
+    ports:
+      web:
+        port: 80
+        nodePort: 30000
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
+      websecure:
+        port: 443
+        nodePort: 30001
+
+# Enables the dashboard in Secure Mode
+    api:
+      dashboard: true
+      insecure: false
