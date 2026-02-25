@@ -12,15 +12,34 @@ spec:
         kind: HelmRepository
         name: traefik
       version: "39.x.x"
-  values:
-    service:
-      type: LoadBalancer
-    ingressRoute:
-      dashboard:
-        enabled: true
-    ports:
-      web:
-        redirectTo: websecure
-    additionalArguments:
-      - "--api.dashboard=true"
-      - "--providers.kubernetesingress=true"
+values:
+  service:
+    type: LoadBalancer
+
+  ports:
+    web:
+      port: 80
+      expose:
+        default: true
+      exposedPort: 80
+      protocol: TCP
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+
+    websecure:
+      port: 443
+      expose:
+        default: true
+      exposedPort: 443
+      protocol: TCP
+
+  api:
+    dashboard: true
+
+  providers:
+    kubernetesIngress:
+      enabled: true
+  
