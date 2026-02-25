@@ -19,3 +19,5 @@ spec:
   values:
     speaker:
       enabled: true
+      tolerations:
+        - operator: Exists
