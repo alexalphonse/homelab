@@ -22,7 +22,6 @@ spec:
 # Enables the dashboard in Secure Mode
     api:
       dashboard: true
-      insecure: true
     
     ingressRoute:
       dashboard:
