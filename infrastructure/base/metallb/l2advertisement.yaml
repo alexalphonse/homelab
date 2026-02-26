@@ -3,3 +3,7 @@ kind: L2Advertisement
 metadata:
   name: metallb-ad
   namespace: metallb
+spec:
+  nodeSelectors:
+   - matchLabels:
+      kubernetes.io/hostname: pi
