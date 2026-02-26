@@ -2,4 +2,3 @@ resources:
   - release.yaml
   - namespace.yaml
   - repository.yaml
-  - prometheus-ingressroute.yaml
