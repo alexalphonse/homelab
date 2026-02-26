@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: PathPrefix(`/prometheus`)
+    - match: Host(`192.168.1.111/prometheus`)
       kind: Rule
       services:
         - name: prometheus-kube-prometheus-prometheus
