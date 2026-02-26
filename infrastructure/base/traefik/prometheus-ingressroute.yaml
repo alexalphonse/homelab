@@ -4,11 +4,14 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`192.168.1.111/prometheus`)
-      kind: Rule
-      services:
-        - name: prometheus-kube-prometheus-prometheus
-          port: 9090
+  values:
+    ports:
+      web:
+        port: 9090
+    
+    ingressRoute:
+      dashboard:
+        enabled: true
+        entryPoints:
+          - web
+        matchRule: PathPrefix(`/prometheus`)
