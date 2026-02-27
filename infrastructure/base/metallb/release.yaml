@@ -21,3 +21,5 @@ spec:
       enabled: true
       tolerations:
         - operator: Exists
+      nodeSelector:
+        kubernetes.io/hostname: pi
