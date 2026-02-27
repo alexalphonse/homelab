@@ -6,6 +6,4 @@ metadata:
 spec:
   ipAddressPools:
     - metallb-ipaddresspool
-  interfaces:
-    - eth0
 
