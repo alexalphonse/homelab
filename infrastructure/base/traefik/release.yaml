@@ -18,6 +18,10 @@ spec:
         port: 80
       websecure:
         port: 443
+    
+    service:
+      enabled: true
+      type: LoadBalancer
 
 # Enables the dashboard in Secure Mode
     api:
