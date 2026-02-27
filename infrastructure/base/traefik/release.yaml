@@ -20,8 +20,10 @@ spec:
         port: 443
     
     service:
-      enabled: true
-      type: LoadBalancer
+      type: NodePort
+      nodePorts:
+        web: 30080
+        websecure: 30443
 
 # Enables the dashboard in Secure Mode
     api:
