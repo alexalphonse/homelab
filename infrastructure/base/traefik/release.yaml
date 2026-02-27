@@ -29,4 +29,14 @@ spec:
         entryPoints:
           - web
           - websecure
-        matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+        matchRule: PathPrefix(`/dashboard`) |kubectl get pods -n metallb -o wide| PathPrefix(`/api`)
+    
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - pi
