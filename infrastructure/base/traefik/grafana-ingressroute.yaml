@@ -13,4 +13,4 @@ spec:
         - name: grafana-strip
       services:
         - name: prometheus-grafana
-          port: 9090
+          port: 80
