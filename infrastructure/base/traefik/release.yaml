@@ -33,7 +33,7 @@ spec:
         entryPoints:
           - web
           - websecure
-        matchRule: PathPrefix(`/dashboard`) |kubectl get pods -n metallb -o wide| PathPrefix(`/api`)
+        matchRule: PathPrefix(`/dashboard`)|| PathPrefix(`/api`)
     
     affinity:
       nodeAffinity:
