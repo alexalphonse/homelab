@@ -2,5 +2,5 @@ resources:
   - release.yaml
   - namespace.yaml
   - repository.yaml
-  - prometheus-ingressroute.yaml
+  - grafana-ingressroute.yaml
   - middleware.yaml
