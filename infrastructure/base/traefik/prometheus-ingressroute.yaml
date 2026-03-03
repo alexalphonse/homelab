@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`prometheus.local`)
+    - match: Host(`192.168.1.201`)
       kind: Rule
       middlewares:
         - name: prometheus-strip
