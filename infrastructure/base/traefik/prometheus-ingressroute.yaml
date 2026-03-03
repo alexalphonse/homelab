@@ -9,6 +9,8 @@ spec:
   routes:
     - match: PathPrefix(`/prometheus`)
       kind: Rule
+      middlewares:
+        - name: prometheus-strip
       services:
         - name: prometheus-kube-prometheus-prometheus
           port: 9090
