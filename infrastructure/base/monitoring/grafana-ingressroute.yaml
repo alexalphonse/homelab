@@ -6,6 +6,7 @@ metadata:
 spec:
   entryPoints:
     - web
+    - websecure
   routes:
     - match: PathPrefix(`/grafana`)
       kind: Rule
