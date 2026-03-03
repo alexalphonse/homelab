@@ -34,10 +34,13 @@ spec:
         server:
           root_url: http://192.168.1.201/grafana
           serve_from_sub_path: true
+          protocol: http
+
       persistence:
         enabled: true
         storageClassName: longhorn
         size: 5Gi
+        
     alertmanager:
       enabled: true
       alertmanagerSpec:
