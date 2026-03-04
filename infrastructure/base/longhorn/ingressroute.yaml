@@ -13,5 +13,5 @@ spec:
     - match: PathPrefix(`/longhorn`)
       kind: Rule
       services:
-        - name: longhorn-ui
+        - name: longhorn-frontend
           port: 80
