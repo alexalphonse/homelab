@@ -12,6 +12,8 @@ spec:
   routes:
     - match: PathPrefix(`/longhorn`)
       kind: Rule
+      middlewares:
+        - name: longhorn-strip
       services:
         - name: longhorn-frontend
           port: 80
