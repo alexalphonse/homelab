@@ -3,15 +3,15 @@ kind: IngressRoute
 metadata:
   name: grafana
   namespace: monitoring
+
 spec:
   entryPoints:
     - web
     - websecure
+
   routes:
     - match: PathPrefix(`/grafana`)
       kind: Rule
-      middlewares:
-        - name: grafana-strip
       services:
         - name: prometheus-grafana
           port: 80
