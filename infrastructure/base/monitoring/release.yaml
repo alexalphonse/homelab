@@ -40,6 +40,10 @@ spec:
         enabled: true
         storageClassName: longhorn
         size: 5Gi
+    
+    nodeExporter:
+      enabled: true
+
         
     alertmanager:
       enabled: true
