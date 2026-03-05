@@ -12,6 +12,8 @@ spec:
   routes:
     - match: PathPrefix(`/homepage`)
       kind: Rule
+      middlewares:
+        - name: homepage-strip
       services:
         - name: homepage
           port: 3000
