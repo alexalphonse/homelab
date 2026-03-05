@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: homepage-release
+  namespace: homepage
+spec:
+  chart:
+    spec:
+      chart: homepage
+      version: 2.x.x
+      sourceRef:
+        kind: HelmRepository
+        name: homepage-repo
+      interval: 1h
+  interval: 1m0s
+  releaseName: homepage
+
+  values:
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 1Gi
