@@ -23,3 +23,12 @@ spec:
       resources:
         requests:
           storage: 1Gi
+    
+     env:
+      HOMEPAGE_BASE_PATH: /homepage
+
+    persistence:
+      enabled: true
+      accessMode: ReadWriteOnce
+      storageClass: longhorn
+      size: 1Gi
