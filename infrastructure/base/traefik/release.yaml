@@ -33,7 +33,7 @@ spec:
         entryPoints:
           - web
           - websecure
-        matchRule: PathPrefix(`/dashboard`)|| PathPrefix(`/api`) || PathPrefix(`/traefik`)
+        matchRule: PathPrefix(`/dashboard`)|| PathPrefix(`/api`)
     
     affinity:
       nodeAffinity:
