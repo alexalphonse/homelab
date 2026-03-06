@@ -10,7 +10,7 @@ spec:
     - websecure
 
   routes:
-    - match: PathPrefix(`/longhorn`)
+    - match: PathPrefix(`/longhorn`) || PathPrefix(`/styles`) || PathPrefix(`/runtime`) || PathPrefix(`/main`)
       kind: Rule
       middlewares:
         - name: longhorn-strip
