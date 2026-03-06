@@ -25,3 +25,22 @@ spec:
           storage: 1Gi
     env:
       HOMEPAGE_ALLOWED_HOSTS: "*"
+    
+    config:
+      bookmarks:
+        - Developer:
+            - Github:
+                - abbr: GH
+                  href: https://github.com
+
+      services:
+        - My First Group:
+            - My First Service:
+                href: http://example.com
+                description: Example service
+
+      widgets:
+        - resources:
+            cpu: true
+            memory: true
+            disk: /
