@@ -39,7 +39,10 @@ spec:
                 icon: traefik.png
                 href: http://192.168.1.201/dashboard
                 description: Network controller
-            
+                widget:
+                  type: traefik
+                  url: http://192.168.1.201/dashboard
+                    
             - Grafana:
                 icon: grafana.png
                 href: http://192.168.1.201/grafana
@@ -49,9 +52,7 @@ spec:
                 icon: longhorn.png
                 href: http://192.168.1.201/longhorn
                 description: storage
-        - widget:
-            type: traefik
-            url: http://192.168.1.201/dashboard
+        
 
       widgets:
         - resources:
