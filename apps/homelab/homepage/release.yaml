@@ -49,14 +49,12 @@ spec:
                 icon: longhorn.png
                 href: http://192.168.1.201/longhorn
                 description: storage
-
+        - widget:
+            type: traefik
+            url: http://192.168.1.201/dashboard
 
       widgets:
         - resources:
             cpu: true
             memory: true
             disk: /
-        
-        - widget:
-            type: traefik
-            url: http://192.168.1.201/dashboard
