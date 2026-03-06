@@ -10,7 +10,18 @@ spec:
     - websecure
 
   routes:
-    - match: PathPrefix(`/homepage`) || PathPrefix(`/_next`) || PathPrefix(`/config`) || PathPrefix(`/site.webmanifest`) || PathPrefix(`/favicon`)
+    - match: PathPrefix(`/homepage`) ||
+           PathPrefix(`/_next`) ||
+           PathPrefix(`/config`) ||
+           PathPrefix(`/favicon`) ||
+           PathPrefix(`/site.webmanifest`) ||
+           PathPrefix(`/services`) ||
+           PathPrefix(`/widgets`) ||
+           PathPrefix(`/bookmarks`) ||
+           PathPrefix(`/resources`) ||
+           PathPrefix(`/releases`) ||
+           PathPrefix(`/validate`) ||
+           PathPrefix(`/hash`)
       kind: Rule
       middlewares:
         - name: homepage-strip
