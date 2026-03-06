@@ -23,6 +23,5 @@ spec:
       resources:
         requests:
           storage: 1Gi
-    extraEnv:
-      - name: HOMEPAGE_ALLOWED_HOSTS
-        value: "*"
+    env:
+      HOMEPAGE_ALLOWED_HOSTS: "*"
