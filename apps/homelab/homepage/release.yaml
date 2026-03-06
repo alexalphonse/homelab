@@ -36,14 +36,17 @@ spec:
       services:
         - Homelab:
             - Traefik:
+                icon: traefik.png
                 href: http://192.168.1.201/dashboard
                 description: Network controller
             
             - Grafana:
+                icon: grafana.png
                 href: http://192.168.1.201/grafana
                 description: monitoring
             
             - Longhorn:
+                icon: longhorn.png
                 href: http://192.168.1.201/longhorn
                 description: storage
 
