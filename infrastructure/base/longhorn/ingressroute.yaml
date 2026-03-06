@@ -10,7 +10,7 @@ spec:
     - websecure
 
   routes:
-    - match: PathPrefix(`/`)
+    - match: PathPrefix(`/longhorn`)
       kind: Rule
       middlewares:
         - name: longhorn-strip
