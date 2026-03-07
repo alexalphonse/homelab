@@ -37,7 +37,7 @@ spec:
                   href: https://alexalphonse.me
       settings:
         theme: dark # or light
-        
+
       services:
         - Homelab:
             - Traefik:
@@ -67,4 +67,12 @@ spec:
             memory: true
             disk: /
       
-      
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - pi
