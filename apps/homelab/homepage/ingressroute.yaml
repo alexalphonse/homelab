@@ -21,7 +21,7 @@ spec:
     - match: PathPrefix(`/homepage/api`)
       kind: Rule
       middlewares:
-        - name: homepage-strip
+        - name: homepage-api-rewrite
       services:
         - name: homepage
           port: 3000
