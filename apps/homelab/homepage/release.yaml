@@ -41,7 +41,7 @@ spec:
                 description: Network controller
                 widget:
                   type: traefik
-                  url: http://192.168.1.201/dashboard
+                  url: http://192.168.1.201
                     
             - Grafana:
                 icon: grafana.png
