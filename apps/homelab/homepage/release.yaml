@@ -35,7 +35,9 @@ spec:
             - Personal website:
                 - abbr: alexalphonse
                   href: https://alexalphonse.me
-      theme: dark # or light
+      settings:
+        theme: dark # or light
+        
       services:
         - Homelab:
             - Traefik:
