@@ -21,7 +21,8 @@ spec:
             PathPrefix(`/resources`) ||
             PathPrefix(`/releases`) ||
             PathPrefix(`/validate`) ||
-            PathPrefix(`/hash`) 
+            PathPrefix(`/hash`) ||
+            PathPrefix(`/api`)
       kind: Rule
       middlewares:
         - name: homepage-strip
