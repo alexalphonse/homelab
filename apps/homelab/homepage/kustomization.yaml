@@ -4,4 +4,3 @@ resources:
   - repository.yaml
   - ingressroute.yaml
   - middleware.yaml
-  - api_rewrite.yaml

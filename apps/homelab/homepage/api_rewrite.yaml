@@ -1,9 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: homepage-api-rewrite
-  namespace: homepage
-spec:
-  replacePathRegex:
-    regex: ^/homepage/api/(.*)
-    replacement: /api/$1
