@@ -61,3 +61,5 @@ spec:
             cpu: true
             memory: true
             disk: /
+      
+      theme: dark # or light
