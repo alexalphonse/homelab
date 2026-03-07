@@ -50,6 +50,11 @@ spec:
                 href: http://192.168.1.201/longhorn
                 description: storage
         
+        - kubernetes:
+            - Omni:
+                icon: Omni.png
+                href: https://192.168.1.5:8080
+                description: Cluster 
 
       widgets:
         - resources:
