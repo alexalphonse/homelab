@@ -3,14 +3,4 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt-cert
 spec:
-  acme:
-    email: alexalponse28@gmail.com
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef:
-      name: letsencrypt-cert-account-key
-    solvers:
-      - http01:
-          ingress:
-            class: traefik
-
   selfSigned: {}
