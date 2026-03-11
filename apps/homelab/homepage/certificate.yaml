@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: homepage-tls
   issuerRef:
-    name: letsencrypt-cert
+    name: homelab-ca
     kind: ClusterIssuer
 
   dnsNames:
