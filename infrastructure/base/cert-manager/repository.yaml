@@ -1,7 +1,10 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+---
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: certmanager-repo
+  name: cert-manager
   namespace: cert-manager
 spec:
-  oci: oci://quay.io/jetstack/charts
+  interval: 1h0m0s
+  type: oci
+  url: oci://quay.io/jetstack/charts/cert-manager

@@ -1,19 +1,25 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: certmanager-release
+  name: cert-manager
   namespace: cert-manager
 spec:
   chart:
     spec:
       chart: cert-manager
-      version: 1.x.x
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: certmanager-repo
-      interval: 1h
+        name: cert-manager
+        namespace: cert-manager
+      version: 1.x.x
+  install:
+    createNamespace: true
   interval: 1m0s
   releaseName: cert-manager
-
+  storageNamespace: cert-manager
+  targetNamespace: cert-manager
   values:
-    installCRDs: true
+    crds:
+      enabled: true
