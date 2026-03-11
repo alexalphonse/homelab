@@ -10,22 +10,13 @@ spec:
     - websecure
 
   routes:
-    - match: PathPrefix(`/homepage`)||
-            PathPrefix(`/_next`) ||
-            PathPrefix(`/config`) ||
-            PathPrefix(`/favicon`) ||
-            PathPrefix(`/site.webmanifest`) ||
-            PathPrefix(`/services`) ||
-            PathPrefix(`/widgets`) ||
-            PathPrefix(`/bookmarks`) ||
-            PathPrefix(`/resources`) ||
-            PathPrefix(`/releases`) ||
-            PathPrefix(`/validate`) ||
-            PathPrefix(`/hash`) ||
-            PathPrefix(`/api`)
+    - match: Host(`homepage.192.168.1.201.sslip.io`)
       kind: Rule
       middlewares:
         - name: homepage-strip
       services:
         - name: homepage
           port: 3000
+  
+  tls:
+    secretName: homelab-wildcard-tls
