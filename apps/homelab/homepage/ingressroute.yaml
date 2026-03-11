@@ -19,4 +19,4 @@ spec:
           port: 3000
   
   tls:
-    secretName: homelab-wildcard-tls
+    secretName: homepage-tls
