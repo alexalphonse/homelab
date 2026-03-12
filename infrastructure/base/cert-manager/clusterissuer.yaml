@@ -1,6 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: homelab-bootstrap
+  name: letsencrypt-http
 spec:
-  selfSigned: {}
+  acme:
+    email: you@example.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-http-key
+    solvers:
+      - http01:
+          ingress:
+            class: traefik
