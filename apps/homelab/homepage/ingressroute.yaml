@@ -10,7 +10,12 @@ spec:
     - websecure
 
   routes:
-    - match: Host(`homepage.192.168.1.201.sslip.io`)
+    - match: Host(`homepage.192.168.1.201.sslip.io`) &&
+             (PathPrefix(`/`) ||
+              PathPrefix(`/api`) ||
+              PathPrefix(`/_next`) ||
+              PathPrefix(`/config`) ||
+              PathPrefix(`/favicon`))
       kind: Rule
       services:
         - name: homepage
