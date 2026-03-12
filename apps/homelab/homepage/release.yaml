@@ -53,7 +53,7 @@ spec:
             - Longhorn:
                 icon: longhorn.png
                 href: http://192.168.1.201/longhorn
-                description: storage
+                description: Longhorn storage
         
         - kubernetes:
             - Omni:
