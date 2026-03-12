@@ -33,7 +33,7 @@ spec:
         entryPoints:
           - web
           - websecure
-        match: Host(`traefik.192.168.1.201.sslip.io`) && PathPrefix(`/dashboard`)
+        match: Host(`traefik.192.168.1.201.sslip.io`) && PathPrefix(`/dashboard`) && PathPrefix(`/api`)
     
     affinity:
       nodeAffinity:
