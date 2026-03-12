@@ -3,3 +3,5 @@ resources:
   - namespace.yaml
   - repository.yaml
   - clusterissuer.yaml
+  - certifiacte.yaml
+  - selfsignedissuer.yaml
