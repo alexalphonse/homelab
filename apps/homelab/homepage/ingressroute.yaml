@@ -12,6 +12,8 @@ spec:
   routes:
     - match: Host(`homepage.192.168.1.201.sslip.io`)
       kind: Rule
+      middlewares:
+        - name: homepage-strip
       services:
         - name: homepage
           port: 3000
