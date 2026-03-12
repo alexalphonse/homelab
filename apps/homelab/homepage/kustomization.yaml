@@ -3,5 +3,5 @@ resources:
   - namespace.yaml
   - repository.yaml
   - ingressroute.yaml
-  - middleware.yaml
+ # - middleware.yaml
   - certificate.yaml
