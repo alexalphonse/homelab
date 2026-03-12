@@ -10,7 +10,7 @@ spec:
     - websecure
 
   routes:
-    - match: Host(`homepage.192-168-1-201.sslip.io`) &&
+    - match: Host(`homepage.local`) &&
              (PathPrefix(`/`) ||
               PathPrefix(`/api`) ||
               PathPrefix(`/_next`) ||
