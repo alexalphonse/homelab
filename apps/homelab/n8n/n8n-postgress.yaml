@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: postgres
+  namespace: n8n
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: postgresql
+      version: "15.x.x"
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+
+  values:
+    auth:
+      existingSecret: n8n-secret
+      username: n8n
+      database: n8n
+      secretKeys:
+        userPasswordKey: postgres-password
+
+    primary:
+      persistence:
+        enabled: true
+        size: 10Gi

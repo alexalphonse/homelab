@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: redis
+  namespace: n8n
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: redis
+      version: "18.x.x"
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+
+  values:
+    architecture: standalone
+
+    auth:
+      enabled: false
+
+    master:
+      persistence:
+        enabled: true
+        size: 5Gi
