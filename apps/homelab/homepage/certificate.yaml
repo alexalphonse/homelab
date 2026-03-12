@@ -6,8 +6,7 @@ metadata:
 spec:
   secretName: homepage-tls
   issuerRef:
-    name: letsencrypt-http
+    name: homelab-ca
     kind: ClusterIssuer
-  commonName: homepage.192-168-1-201.sslip.io
   dnsNames:
-    - homepage.192-168-1-201.sslip.io
+  - homepage.192-168-1-201.sslip.io
