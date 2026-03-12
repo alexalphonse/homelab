@@ -42,7 +42,7 @@ spec:
         - Homelab:
             - Traefik:
                 icon: traefik.png
-                href: http://192.168.1.201/dashboard
+                href: https://traefik.192.168.1.201.sslip.io/dashboard
                 description: Network controller
                     
             - Grafana:
