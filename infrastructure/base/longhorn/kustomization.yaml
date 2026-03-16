@@ -2,5 +2,5 @@ resources:
   - release.yaml
   - namespace.yaml
   - repository.yaml
-  - ingressroute.yaml
-  - middleware.yaml
+  #- ingressroute.yaml
+  #- middleware.yaml
