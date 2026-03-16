@@ -6,4 +6,3 @@ resources:
 - longhorn
 - kubevirt
 - monitoring
-- cert-manager

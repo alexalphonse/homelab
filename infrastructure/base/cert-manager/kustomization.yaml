@@ -1,7 +1,0 @@
-resources:
-  - release.yaml
-  - namespace.yaml
-  - repository.yaml
-  - clusterissuer.yaml
-  - certificate.yaml
-  - selfsignedissuer.yaml
