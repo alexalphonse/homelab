@@ -22,6 +22,14 @@ spec:
     service:
       enabled: true
       type: LoadBalancer
+    
+    metrics:
+      prometheus:
+        enabled: true
+        # optional but recommended:
+        addEntryPointsLabels: true
+        addServicesLabels: true
+        addRoutersLabels: true
 
 # Enables the dashboard in Secure Mode
     api:
