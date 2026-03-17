@@ -6,7 +6,7 @@ metadata:
 spec:
   running: true
 
-  dataVolumeTemplates:   # ✅ CORRECT LOCATION
+  dataVolumeTemplates:
     - metadata:
         name: win10-rootdisk
       spec:
@@ -50,9 +50,9 @@ spec:
             - name: default
               masquerade: {}
 
-      #networks:
-      #  - name: default
-      #    pod: {}
+      networks:
+        - name: default
+          pod: {}
 
       volumes:
         - name: rootdisk
