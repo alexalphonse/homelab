@@ -1,0 +1,58 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: win10-vm
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: win10
+    spec:
+      domain:
+        cpu:
+          cores: 2
+        resources:
+          requests:
+            memory: 4Gi
+        devices:
+          disks:
+            - name: containerdisk
+              disk:
+                bus: virtio
+            - name: cdromiso
+              cdrom:
+                bus: sata
+            - name: virtiodisk
+              cdrom:
+                bus: sata
+          interfaces:
+            - name: default
+              masquerade: {}
+      #networks:
+      #  - name: default
+      #    pod: {}
+      volumes:
+        - name: containerdisk
+          dataVolume:
+            name: win10-rootdisk
+        - name: cdromiso
+          persistentVolumeClaim:
+            claimName: win10-iso
+        - name: virtiodisk
+          containerDisk:
+            image: quay.io/kubevirt/virtio-container-disk
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: win10-rootdisk
+spec:
+  source:
+    blank: {}
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 50Gi
