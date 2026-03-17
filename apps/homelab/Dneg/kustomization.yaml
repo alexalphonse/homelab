@@ -1,2 +1,3 @@
 resources:
   - Dneg-vm.yaml
+  - namespace.yaml
