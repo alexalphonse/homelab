@@ -18,6 +18,11 @@ spec:
         port: 80
       websecure:
         port: 443
+      
+      metrics:
+        port: 9100
+        expose:
+          default: true
     
     service:
       enabled: true
