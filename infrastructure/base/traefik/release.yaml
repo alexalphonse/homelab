@@ -26,11 +26,8 @@ spec:
     metrics:
       prometheus:
         enabled: true
-        # optional but recommended:
-        addEntryPointsLabels: true
-        addServicesLabels: true
-        addRoutersLabels: true
-
+        serviceMonitor:
+          enabled: true
 # Enables the dashboard in Secure Mode
     api:
       dashboard: true
