@@ -33,6 +33,8 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+          additionalLabels:
+            release: prometheus
 # Enables the dashboard in Secure Mode
     api:
       dashboard: true
