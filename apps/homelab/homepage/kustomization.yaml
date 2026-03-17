@@ -3,5 +3,3 @@ resources:
   - namespace.yaml
   - repository.yaml
   - ingressroute.yaml
-  - cacertificate.yaml
-  - certificate.yaml
