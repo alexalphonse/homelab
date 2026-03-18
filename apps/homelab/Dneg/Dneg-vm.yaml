@@ -4,7 +4,7 @@ metadata:
   name: dneg-vm
   namespace: dneg
 spec:
-  running: true
+  runStrategy: Manual
 
   dataVolumeTemplates:
     - metadata:
