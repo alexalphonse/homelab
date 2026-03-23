@@ -2,4 +2,4 @@ resources:
   - release.yaml
   - namespace.yaml
   - repository.yaml
-  - ingressroute.yaml
+ # - ingressroute.yaml
