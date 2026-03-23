@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
 - homepage
 #- n8n
-#- Dneg
+- Dneg
 

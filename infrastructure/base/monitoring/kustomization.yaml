@@ -2,4 +2,4 @@ resources:
   - release.yaml
   - namespace.yaml
   - repository.yaml
- # - grafana-ingressroute.yaml
+  - grafana-ingressroute.yaml
