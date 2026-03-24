@@ -20,7 +20,8 @@ spec:
         port: 443
       rdp:
         port: 3389
-        expose: true
+        expose:
+          default: true
         exposedPort: 3389
         protocol: TCP
       
@@ -40,11 +41,6 @@ spec:
           enabled: true
           additionalLabels:
             release: prometheus
-
-    additionalArguments:
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.rdp.address=:3389"
     
 # Enables the dashboard in Secure Mode
     api:

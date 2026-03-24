@@ -11,3 +11,20 @@ spec:
       services:
         - name: dneg-rdp
           port: 3389
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dneg-rdp
+  namespace: dneg
+spec:
+  selector:
+    vm.kubevirt.io/name: dneg-vm
+  ports:
+    - name: rdp
+      port: 3389
+      targetPort: 3389
+  type: ClusterIP
