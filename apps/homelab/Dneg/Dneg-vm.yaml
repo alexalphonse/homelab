@@ -52,8 +52,7 @@ spec:
             - name: default
               masquerade: {}
 
-          graphics:
-            type: spice
+          autoattachGraphicsDevice: true
 
       networks:
         - name: default
