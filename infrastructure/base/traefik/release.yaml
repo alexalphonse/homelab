@@ -22,6 +22,7 @@ spec:
         port: 3389
         expose: true
         exposedPort: 3389
+        protocol: TCP
       
       metrics:
         port: 9100
@@ -40,8 +41,6 @@ spec:
           additionalLabels:
             release: prometheus
     
-    additionalArguments:
-      - "--entrypoints.rdp.address=:3389"
 # Enables the dashboard in Secure Mode
     api:
       dashboard: true
