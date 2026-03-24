@@ -1,3 +1,4 @@
 resources:
   - Dneg-vm.yaml
   - namespace.yaml
+  - ingress.yaml

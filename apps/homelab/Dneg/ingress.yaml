@@ -1,0 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: dneg-rdp
+  namespace: dneg
+spec:
+  entryPoints:
+    - rdp
+  routes:
+    - match: HostSNI(`*`)
+      services:
+        - name: dneg-rdp
+          port: 3389
