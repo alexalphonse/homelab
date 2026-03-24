@@ -52,6 +52,9 @@ spec:
             - name: default
               masquerade: {}
 
+          graphics:
+            type: spice
+
       networks:
         - name: default
           pod: {}
