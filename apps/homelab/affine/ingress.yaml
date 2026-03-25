@@ -10,7 +10,7 @@ spec:
     - websecure
 
   routes:
-    - match: (PathPrefix(`/affine`)
+    - match: PathPrefix(`/affine`)
       kind: Rule
       services:
         - name: affine
