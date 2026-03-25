@@ -4,3 +4,4 @@ resources:
 - homepage
 #- n8n
 - Dneg
+- affine
