@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: affine-postgres
+  namespace: affine
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: postgresql
+      version: "15.x.x"
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+  values:
+    auth:
+      username: affine
+      password: affinepass
+      database: affine
+    primary:
+      persistence:
+        enabled: true
+        storageClass: longhorn
+        size: 10Gi

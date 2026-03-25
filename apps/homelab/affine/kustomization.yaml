@@ -1,0 +1,9 @@
+iapiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - postgres-hr.yaml
+  - redis-hr.yaml
+  - affine-deploy.yaml
+  - affine-service.yaml
+  - ingress.yaml

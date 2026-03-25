@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: affine
+  namespace: affine
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  routes:
+    - match: (PathPrefix(`/affine`)
+      kind: Rule
+      services:
+        - name: affine
+          port: 80
