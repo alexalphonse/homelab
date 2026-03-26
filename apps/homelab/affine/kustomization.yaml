@@ -7,3 +7,5 @@ resources:
   - affine-deploy.yaml
   - affine-service.yaml
   - ingress.yaml
+  - postgres_deploy.yaml
+  - redis_deploy.yaml
