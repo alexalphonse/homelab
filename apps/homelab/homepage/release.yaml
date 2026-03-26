@@ -62,6 +62,11 @@ spec:
                 icon: longhorn.png
                 href: http://192.168.1.201/longhorn
                 description: Longhorn storage
+
+            - affine:
+                icon: affine.png
+                href: http://192.168.1.201/affine
+                description: Knowledge OS
                
         
         - kubernetes:
