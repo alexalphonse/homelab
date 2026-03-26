@@ -4,4 +4,4 @@ metadata:
   name: homepage-repo
   namespace: homepage
 spec:
-  url: https://jameswynn.github.io/helm-charts
+  url: ghcr.io/gethomepage/homepage
