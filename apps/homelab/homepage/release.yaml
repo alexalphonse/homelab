@@ -48,15 +48,7 @@ spec:
             - Grafana:
                 icon: grafana.png
                 href: http://192.168.1.201/grafana
-                description: monitoring
-                widget:
-                  type: grafana
-                  version: 2 # optional, default is 1
-                  alerts: alertmanager # optional, default is grafana
-                  url: http://192.168.1.201/grafana
-                  username: admin
-                  password: changme
-                
+                description: monitoring 
             
             - Longhorn:
                 icon: longhorn.png
