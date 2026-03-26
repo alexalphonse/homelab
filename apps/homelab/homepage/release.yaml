@@ -7,7 +7,7 @@ spec:
   chart:
     spec:
       chart: homepage
-      version: 1.x.x
+      version: 2.x.x
       sourceRef:
         kind: HelmRepository
         name: homepage-repo
@@ -49,11 +49,20 @@ spec:
                 icon: grafana.png
                 href: http://192.168.1.201/grafana
                 description: monitoring
+                widget:
+                  type: grafana
+                  version: 2 # optional, default is 1
+                  alerts: alertmanager # optional, default is grafana
+                  url: http://192.168.1.201/grafana
+                  username: admin
+                  password: changme
+                
             
             - Longhorn:
                 icon: longhorn.png
                 href: http://192.168.1.201/longhorn
                 description: Longhorn storage
+               
         
         - kubernetes:
             - Omni:
