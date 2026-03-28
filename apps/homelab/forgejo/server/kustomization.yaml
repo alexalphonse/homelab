@@ -1,0 +1,17 @@
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: forgejo
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - storage.yaml
+  - deployment.yaml
+  - networking.yaml
+  - ingress.yaml
+  - networkpolicy.yaml
+
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s

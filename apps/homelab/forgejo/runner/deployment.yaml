@@ -1,0 +1,155 @@
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forgejo-runner
+  namespace: forgejo-runner
+  labels:
+    app.kubernetes.io/name: forgejo-runner
+    app.kubernetes.io/instance: forgejo-runner
+    app.kubernetes.io/component: runner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: forgejo-runner
+
+  template:
+    metadata:
+      labels:
+        app: forgejo-runner
+        app.kubernetes.io/name: forgejo-runner
+        app.kubernetes.io/instance: forgejo-runner
+        app.kubernetes.io/component: runner
+        policy-type: "app"
+
+    spec:
+      # NOTE: Cannot run as non-root. The Docker-in-Docker sidecar requires
+      # privileged: true to run the Docker daemon. This is a fundamental
+      # requirement for container-based CI/CD runners that build images.
+      # Alternative: Use Kubernetes-native runners (e.g., Kaniko) for rootless builds.
+      securityContext:
+        fsGroup: 1000
+
+      initContainers:
+        # Register runner with Forgejo instance
+        # Token generated in Forgejo: Site Administration > Actions > Runners
+        - name: register-runner
+          image: data.forgejo.org/forgejo/runner:12.6.4
+          command:
+            - sh
+            - -c
+            - |
+              if [ ! -f /data/.runner ]; then
+                echo "Registering runner..."
+                forgejo-runner register \
+                  --instance https://192.168.1.201 \
+                  --token "${RUNNER_TOKEN}" \
+                  --name "k8s-runner" \
+                  --labels "docker:docker://ghcr.io/catthehacker/ubuntu:act-22.04,ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04" \
+                  --no-interactive
+                mv .runner /data/.runner
+              else
+                echo "Runner already registered"
+              fi
+          env:
+            - name: RUNNER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: forgejo-runner-secret
+                  key: RUNNER_TOKEN
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+
+      containers:
+        # Docker-in-Docker sidecar — provides Docker daemon for CI jobs
+        - name: docker
+          image: docker:29-dind
+          args:
+            - --tls=false
+          securityContext:
+            privileged: true
+          env:
+            - name: DOCKER_TLS_CERTDIR
+              value: ""
+          ports:
+            - containerPort: 2375
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: 2375
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /version
+              port: 2375
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: docker-storage
+              mountPath: /var/lib/docker
+
+        # Forgejo runner — executes CI/CD workflows
+        - name: runner
+          image: data.forgejo.org/forgejo/runner:12.6.4
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for Docker daemon..."
+              while ! wget -q -O- http://localhost:2375/version >/dev/null 2>&1; do
+                sleep 1
+              done
+              echo "Docker is ready!"
+              cp /data/.runner .runner
+              forgejo-runner daemon --config /config/config.yaml
+          livenessProbe:
+            exec:
+              command:
+                - pgrep
+                - -f
+                - forgejo-runner
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            exec:
+              command:
+                - pgrep
+                - -f
+                - forgejo-runner
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          env:
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+          volumeMounts:
+            - name: runner-data
+              mountPath: /data
+            - name: config
+              mountPath: /config
+
+      volumes:
+        - name: runner-data
+          emptyDir: {}
+        - name: docker-storage
+          persistentVolumeClaim:
+            claimName: forgejo-runner-docker-cache
+        - name: config
+          configMap:
+            name: forgejo-runner-config
+
+      restartPolicy: Always
+
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s

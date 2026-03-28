@@ -1,0 +1,18 @@
+# Is this overwhelming?
+# https://kubecraft.click/forgejo-k8s
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  ports:
+    - port: 3000
+      name: http
+  selector:
+    app: forgejo
+  type: ClusterIP
+
+# Is this overwhelming?
+# https://kubecraft.click/forgejo-k8s

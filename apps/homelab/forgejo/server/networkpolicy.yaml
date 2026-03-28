@@ -1,0 +1,60 @@
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s
+
+# CiliumNetworkPolicy — requires Cilium CNI
+# If using a different CNI, replace with a standard NetworkPolicy
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: forgejo-app
+  namespace: forgejo
+spec:
+  endpointSelector:
+    matchLabels:
+      policy-type: "app"
+  ingress:
+    # Allow from same namespace
+    - fromEndpoints:
+        - {}
+    # Allow from monitoring namespace (Prometheus scraping)
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: monitoring
+    # Allow from ingress controller
+    - fromEntities:
+        - ingress
+    # Allow SSH from external (LoadBalancer)
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "2222"
+              protocol: TCP
+  egress:
+    # DNS resolution
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
+    # Same namespace (for database connection)
+    - toEndpoints:
+        - {}
+    # External HTTPS (webhooks, federation, etc.)
+    - toEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+            - port: "80"
+              protocol: TCP
+
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s

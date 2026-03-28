@@ -1,0 +1,33 @@
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: forgejo
+  namespace: forgejo
+  annotations:
+    # CHANGE: If using external-dns, set your hostname
+    external-dns.alpha.kubernetes.io/hostname: forgejo.example.com
+    # CHANGE: If using cert-manager, set your issuer
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: cilium
+  tls:
+    - hosts:
+        - forgejo.example.com # CHANGE: your domain
+      secretName: forgejo-tls
+  rules:
+    - host: forgejo.example.com # CHANGE: your domain
+      http:
+        paths:
+          - backend:
+              service:
+                name: forgejo
+                port:
+                  number: 3000
+            path: /
+            pathType: Prefix
+
+# Stuck with getting this to work?
+# https://kubecraft.click/forgejo-k8s
